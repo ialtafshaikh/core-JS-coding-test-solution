@@ -5,7 +5,23 @@
 */
 
 const addition = (...numbers) => {
-  // all your code
+  if (numbers.length == 0) throw new Error("Invalid Input");
+  
+  let isAllNum = numbers.every((num)=>{
+    return Number.isInteger(num);
+  })
+
+  if(isAllNum){
+    let sum = 0;
+    numbers.forEach((num) => {
+      sum += num;
+    });
+
+    return sum;
+  }else{
+    throw new Error("Invalid Input");
+  }
+
 };
 
 module.exports = addition;
