@@ -6,6 +6,32 @@ Count the frequency of a vowels in a given string.
 3. In case numbers are passed it shoul throw an error with message "Invalid Input"
 */
 
-const frequencyCounter = (str) => {};
+function countOccurrence(str, letter) {
+    // creating regex 
+    const re = new RegExp(letter, 'g');
+
+    // matching the pattern
+    let match = str.match(re);
+
+    if(match != null){
+      return match.length;
+    }else{
+       return 0;
+    }
+}
+
+const frequencyCounter = (str) => {
+   if (!(str)) throw new Error("Invalid Input");
+   if (!(typeof(str) == typeof(''))) throw new Error("Invalid Input");
+
+   const frequencyCount = {};
+   const letter = ["a","e","i","o","u"];
+
+   letter.forEach((letter) => {
+      frequencyCount[letter] = countOccurrence(str, letter)
+   });
+
+   return frequencyCount;
+};
 
 module.exports = frequencyCounter;
